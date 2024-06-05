@@ -2,11 +2,18 @@ import AuthLayout from "@/components/templates/AuthLayout.jsx";
 import LoginForm from "@/components/organisms/LoginForm/index.jsx";
 
 export default function LoginPages() {
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
   return (
     <>
-      <AuthLayout label="Login">
-        <LoginForm />
-      </AuthLayout>
+      <div className="">
+        {isAuthenticated ? (
+          (window.location.href = "/")
+        ) : (
+          <AuthLayout label="Login">
+            <LoginForm />
+          </AuthLayout>
+        )}
+      </div>
     </>
   );
 }
